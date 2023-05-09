@@ -37,7 +37,7 @@ import java.util.logging.Logger;
 @RequestScoped
 public class MovieService {
     private static final Logger LOG = Logger.getLogger(MovieService.class.getName());
-    private Map<Integer, Movie> store = new ConcurrentHashMap<>();
+    //private Map<Integer, Movie> store = new ConcurrentHashMap<>();
 
     @Inject
     private EchoServiceClient echoServiceClient;
@@ -55,13 +55,13 @@ public class MovieService {
     }
     @GET
     public List<Movie> getAllMovies() {
-        return new ArrayList<>(store.values());
+        return new ArrayList<>();//store.values());
     }
 
     @POST
     public Movie addMovie(final Movie newMovie) {
         LOG.info("adding movie: " + newMovie);
-        store.put(newMovie.getId(), newMovie);
+        //store.put(newMovie.getId(), newMovie);
         echoServiceClient.getEcho(newMovie);
         return newMovie;
     }
